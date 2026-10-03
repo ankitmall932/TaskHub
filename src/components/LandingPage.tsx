@@ -12,7 +12,7 @@ export default function LandingPage ()
                         and <span className="text-lime-500">Get More Done</span>, <br /><span>Every Day</span></h1>
                     <h2 className="text-lg mb-10">Organize your work, prioritize what matters, track your progress, and stay on top of every task — all in one simple, powerful workspace built to help you work smarter and accomplish more.</h2>
                     <div>
-                        <Link className="border border-white bg-black text-white text-xl font-semibold px-5 py-3 rounded-xl " href={ '/login' }>Get Started. It&lsquo;s Free</Link>
+                        <Link className="border border-white bg-black text-white text-xl font-semibold px-5 py-3 rounded-xl " href={ '/auth/login' }>Get Started. It&lsquo;s Free</Link>
                     </div>
                 </div>
                 <div className="flex flex-col justify-center items-center h-full  w-full">

@@ -3,6 +3,7 @@
 import { auth } from "@/lib/auth/auth";
 import { prisma } from "@/lib/db/prisma";
 import { signUpSchema } from "@/lib/validations/signUp";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 
@@ -41,7 +42,8 @@ export async function signUp ( _prevState: { success: boolean; message: string; 
                 email: result.data.email,
                 password: result.data.password,
                 callbackURL: '/user/dashboard'
-            }
+            },
+            headers: await headers()
         } );
     }
     catch ( error )
@@ -53,3 +55,49 @@ export async function signUp ( _prevState: { success: boolean; message: string; 
     }
     redirect( '/auth/verify-email' );
 }
+
+export async function signIn ( _prevState: { success: boolean; message: string; }, formData: FormData )
+{
+    try
+    {
+        const data = {
+            email: formData.get( 'email' ) as string,
+            password: formData.get( 'password' ) as string,
+        };
+        await auth.api.signInEmail( {
+            body: {
+                email: data.email,
+                password: data.password,
+                callbackURL: '/user/dashboard'
+            },
+            headers: await headers()
+        } );
+    }
+    catch ( error )
+    {
+        return {
+            success: false,
+            message: error instanceof Error ? error.message : 'Unable to create your account.',
+        };
+    }
+    redirect( '/user/dashboard' );
+}
+
+export async function signOut ()
+{
+    try
+    {
+        await auth.api.signOut( {
+            headers: await headers()
+        } );
+    }
+    catch ( error )
+    {
+        return {
+            success: false,
+            message: error instanceof Error ? error.message : 'Unable to create your account.',
+        };
+    }
+    redirect( '/' );
+}
+

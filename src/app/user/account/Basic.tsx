@@ -30,6 +30,7 @@ export default function BasicPart ( { session }: { session: Session | null; } )
                     <div className="p-2 bg-gray-500 rounded-lg cursor-pointer text-white">UpdateImage</div>
                     <div className="p-2 bg-gray-500 rounded-lg cursor-pointer text-white">Update Password </div>
                 </div>
+
             </div>
         </>
     );

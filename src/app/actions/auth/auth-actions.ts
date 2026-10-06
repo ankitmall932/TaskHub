@@ -85,19 +85,35 @@ export async function signIn ( _prevState: { success: boolean; message: string; 
 
 export async function signOut ()
 {
+    await auth.api.signOut( {
+        headers: await headers()
+    } );
+    redirect( '/' );
+}
+
+
+export async function signOutAll ()
+{
+    await auth.api.revokeSessions( {
+        headers: await headers(),
+    } );
+    redirect( '/' );
+}
+
+export async function deleteAccount ( password?: string )
+{
     try
     {
-        await auth.api.signOut( {
+        await auth.api.deleteUser( {
+            body: password ? { password, } : {},
             headers: await headers()
         } );
-    }
-    catch ( error )
+    } catch ( error )
     {
         return {
             success: false,
-            message: error instanceof Error ? error.message : 'Unable to create your account.',
+            message: error instanceof Error ? error.message : 'Unable to delete account'
         };
     }
     redirect( '/' );
 }
-

@@ -14,6 +14,11 @@ export const auth = betterAuth( {
         requireEmailVerification: true,
         autoSignIn: false,
     },
+    user: {
+        deleteUser: {
+            enabled: true,
+        },
+    },
     emailVerification: {
         sendOnSignUp: true,
         sendVerificationEmail: async ( { user, url } ) =>

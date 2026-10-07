@@ -1,6 +1,6 @@
 'use server';
 
-import { auth } from "@/lib/auth/auth";
+import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db/prisma";
 import { signUpSchema } from "@/lib/validations/signUp";
 import { headers } from "next/headers";

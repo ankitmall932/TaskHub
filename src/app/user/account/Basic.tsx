@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth/auth";
+import { auth } from "@/lib/auth";
 import Password from "@/app/user/account/Password";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,5 +1,5 @@
 import { signOut, signOutAll } from "@/app/actions/auth/auth-actions";
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/auth/auth";
 import { APIError } from "better-auth";
 import { headers } from "next/headers";
 import DeleteAccountButton from "./DeleteAccountButton";

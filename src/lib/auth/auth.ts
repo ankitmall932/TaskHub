@@ -13,6 +13,15 @@ export const auth = betterAuth( {
         enabled: true,
         requireEmailVerification: true,
         autoSignIn: false,
+        revokeSessionsOnPasswordReset: true,
+        sendResetPassword: async ( { user, url } ) =>
+        {
+            await sendEmail( {
+                to: user.email,
+                subject: "Reset your password",
+                text: `Use this link to reset your password. The link expires in one hour:\n\n${ url }`,
+            } );
+        },
     },
     user: {
         deleteUser: {

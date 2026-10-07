@@ -53,6 +53,11 @@ export default function SignIn ()
                     <div>
                         <input className="bg-gray-100 p-3 w-full rounded-2xl " placeholder="Please enter your password" name="password" type="password" autoComplete="new-password" required minLength={ 8 } />
                     </div>
+                    <div className="flex justify-end">
+                        <Link className="text-sm text-blue-600 underline" href="/auth/forgot-password">
+                            Forgot password?
+                        </Link>
+                    </div>
                     <div className="flex items-center justify-end">
                         <button className={ `bg-sky-500 p-2 rounded-2xl text-white w-fit cursor-pointer ${ isPending && 'opacity-50 cursor-not-allowed' }` } type="submit" disabled={ isPending }>
                             { isPending ? "Login...." : "Login" }

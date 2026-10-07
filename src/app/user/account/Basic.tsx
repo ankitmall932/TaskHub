@@ -1,5 +1,7 @@
 import { auth } from "@/lib/auth/auth";
+import Password from "@/app/user/account/Password";
 import Image from "next/image";
+import Link from "next/link";
 
 
 type Session = typeof auth.$Infer.Session;
@@ -26,11 +28,11 @@ export default function BasicPart ( { session }: { session: Session | null; } )
                     <div  >{ session?.user.email }</div>
                 </div>
                 <div className=" w-full flex flex-wrap gap-5  mt-10 items-center justify-around h-fit p-2">
-                    <div className="p-2 bg-gray-500 rounded-lg cursor-pointer text-white">EditName </div>
-                    <div className="p-2 bg-gray-500 rounded-lg cursor-pointer text-white">UpdateImage</div>
-                    <div className="p-2 bg-gray-500 rounded-lg cursor-pointer text-white">Update Password </div>
+                    <Link href="/user/account/edit-name" className="rounded-lg bg-gray-500 p-2 text-white">
+                        Edit name
+                    </Link>
+                    <Password />
                 </div>
-
             </div>
         </>
     );

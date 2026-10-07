@@ -2,7 +2,7 @@ import { signOut, signOutAll } from "@/app/actions/auth/auth-actions";
 import { auth } from "@/lib/auth/auth";
 import { APIError } from "better-auth";
 import { headers } from "next/headers";
-import DeleteAccountButton from "../../../components/auth/DeleteAccountButton";
+import DeleteAccountButton from "./DeleteAccountButton";
 
 
 type Session = typeof auth.$Infer.Session;
@@ -63,6 +63,8 @@ export default async function SecurityPassword ( { session }: { session: Session
                     </form>
                     <DeleteAccountButton />
                 </div>
+
+
                 <section className="w-full space-y-3" aria-labelledby="signed-in-devices-heading">
                     <div>
                         <h2 id="signed-in-devices-heading" className="text-lg font-semibold">Signed-in devices</h2>

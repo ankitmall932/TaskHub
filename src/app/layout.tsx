@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getSession } from "@/lib/auth/get-session";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const geistSans = Geist( {
   variable: "--font-geist-sans",
@@ -38,6 +40,9 @@ export default async function RootLayout ( { children }: LayoutProps<"/"> )
         <div className="pb-5  sm:px-10 px-2 w-full">
           <Footer />
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={ 3000 } />
       </body>
     </html>
   );

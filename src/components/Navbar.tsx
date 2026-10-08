@@ -10,7 +10,7 @@ type Session = typeof auth.$Infer.Session;
 
 const navItems = [
     { label: "Dashboard", href: "/user/dashboard" },
-    { label: "Create", href: "/user/create-task" },
+    { label: "Spaces", href: "/user/spaces" },
     { label: "Task", href: "/user/task" },
     { label: "Sheet", href: "/user/time-sheet" },
 ];

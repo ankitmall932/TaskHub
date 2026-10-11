@@ -178,7 +178,7 @@ export async function updateAccountName ( _prevState: { success: boolean; messag
     try
     {
         await auth.api.updateUser( {
-            body: submittedName,
+            body: { name: submittedName },
             headers: await headers(),
         } );
     }

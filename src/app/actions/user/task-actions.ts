@@ -104,3 +104,44 @@ export const getTaskBySpace = async ( id: string ) =>
         };
     }
 };
+
+export const updateStatus = async ( id: string, status: 'Pending' | 'InProgress' | 'Completed' ) =>
+{
+    try
+    {
+        const session = await getSession();
+        if ( !session )
+        {
+            return {
+                success: false,
+                message: 'Unauthorized'
+            };
+        }
+        const result = await prisma.task.updateMany( {
+            where: {
+                id,
+                userId: session.user.id
+            },
+            data: {
+                status
+            }
+        } );
+        if ( result.count === 0 )
+        {
+            return {
+                success: false,
+                message: 'Task not found'
+            };
+        }
+        return {
+            success: true,
+            message: 'Task status updated'
+        };
+    } catch ( error )
+    {
+        return {
+            success: false,
+            message: error instanceof Error ? error.message : 'Something went wrong'
+        };
+    }
+};

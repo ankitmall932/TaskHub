@@ -1,4 +1,5 @@
 import { getTaskBySpace } from "@/app/actions/user/task-actions";
+import Status from "@/components/tasks/Status";
 
 export default async function SpaceTask ( { id }: { id: string; } )
 {
@@ -22,7 +23,9 @@ export default async function SpaceTask ( { id }: { id: string; } )
                 <div key={ task.id } className={ `h-full w-full p-5 shadow-sm flex flex-col gap-5  ${ task.overDue ? 'bg-red-300 border-2 border-red-500 rounded-2xl' : 'bg-gray-50 border-2 border-gray-400 rounded-2xl' }` }>
                     <div className="flex flex-row items-center justify-around text-xs">
                         <div className={ `p-2 rounded-lg cursor-not-allowed ${ task.priority === 'Medium' && 'bg-yellow-100 text-yellow-500 font-semibold' } ${ task.priority === 'High' && 'bg-red-100 text-red-500 font-semibold' } ${ task.priority === 'Low' && 'bg-gray-200 text-gray-600 font-semibold' }` }>{ task.priority }</div>
-                        <div className={ `p-2 rounded-lg ${ task.status === 'Pending' && 'bg-amber-100 text-amber-700 font-semibold' } ${ task.status === 'InProgress' && 'bg-blue-100 text-blue-700 font-semibold' } ${ task.status === 'Completed' && 'bg-green-100 text-green-700 font-semibold' }` }>{ task.status }</div>
+                        <div>
+                            <Status task={ task.status } id={ task.id } />
+                        </div>
                         <div className='bg-blue-100 text-blue-700 font-semibold p-2 rounded-lg'>Edit</div>
                         <div className='bg-red-100 text-red-500 font-semibold p-2 rounded-lg'>Delete</div>
                     </div>

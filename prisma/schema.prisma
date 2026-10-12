@@ -103,6 +103,8 @@ model Task{
   due DateTime
   spaceId String @db.Uuid
   userId String
+  overDue Boolean @default(false)
+  createdAt DateTime @default(now())
   user User @relation(fields: [userId],references: [id], onDelete: Cascade)
   spaces Spaces @relation(fields: [spaceId], references: [id],onDelete: Cascade)
 

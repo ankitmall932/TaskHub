@@ -12,7 +12,6 @@ const navItems = [
     { label: "Dashboard", href: "/user/dashboard" },
     { label: "Spaces", href: "/user/spaces" },
     { label: "Task", href: "/user/task" },
-    { label: "Sheet", href: "/user/time-sheet" },
 ];
 
 export default function Navbar ( { session }: { session: Session | null; } )

@@ -125,7 +125,10 @@ export const updateStatus = async ( id: string, status: 'Pending' | 'InProgress'
                 userId: session.user.id
             },
             data: {
-                status
+                status,
+                ...( status === 'Completed' && {
+                    overDue: false
+                } )
             }
         } );
         return {

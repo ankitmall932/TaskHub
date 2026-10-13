@@ -1,5 +1,7 @@
 import { getTaskBySpace } from "@/app/actions/user/task-actions";
+import Delete from "@/components/tasks/Delete";
 import Status from "@/components/tasks/Status";
+import Link from "next/link";
 
 export default async function SpaceTask ( { id }: { id: string; } )
 {
@@ -26,8 +28,12 @@ export default async function SpaceTask ( { id }: { id: string; } )
                         <div>
                             <Status task={ task.status } id={ task.id } />
                         </div>
-                        <div className='bg-blue-100 text-blue-700 font-semibold p-2 rounded-lg'>Edit</div>
-                        <div className='bg-red-100 text-red-500 font-semibold p-2 rounded-lg'>Delete</div>
+                        <div>
+                            <Link href={ `/user/task/${ task.id }/edit-task` } className='bg-blue-100 text-blue-700 font-semibold p-2 rounded-lg cursor-pointer'>Edit</Link>
+                        </div>
+                        <div>
+                            <Delete id={ task.id } spaceId={ task.spaceId } />
+                        </div>
                     </div>
                     <div className="px-5">
                         <div className="text-xl font-semibold">Topic:  { task.topic }</div>

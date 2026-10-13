@@ -1,3 +1,4 @@
+import AllTask from "./AllTask";
 
 
 export default function Task ()
@@ -5,7 +6,7 @@ export default function Task ()
     return (
         <>
             <div>
-                <h1>Show all task page</h1>
+                <AllTask />
             </div>
         </>
     );

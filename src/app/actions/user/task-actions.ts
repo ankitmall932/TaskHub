@@ -264,3 +264,40 @@ export const deleteTask = async ( id: string, spaceId: string ) =>
     }
     revalidatePath( `/user/spaces/${ spaceId }` );
 };
+
+export const getAllTask = async () =>
+{
+    try
+    {
+        const session = await getSession();
+        if ( !session )
+        {
+            return {
+                success: false,
+                message: 'Unauthorized'
+            };
+        }
+        const tasks = await prisma.task.findMany( {
+            where: {
+                userId: session.user.id
+            },
+            include: {
+                spaces: {
+                    select: {
+                        name: true,
+                    }
+                }
+            }
+        } );
+        return {
+            success: true,
+            data: tasks
+        };
+    } catch ( error )
+    {
+        return {
+            success: false,
+            message: error instanceof Error ? error.message : 'Something went wrong'
+        };
+    }
+};

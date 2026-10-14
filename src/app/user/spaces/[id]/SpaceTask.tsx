@@ -22,7 +22,7 @@ export default async function SpaceTask ( { id }: { id: string; } )
     return (
         <div className={ `h-full w-full grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5` }>
             { data.map( ( task ) => (
-                <div key={ task.id } className={ `h-full w-full p-5 shadow-sm flex flex-col gap-5  ${ task.overDue ? 'bg-red-300 border-2 border-red-500 rounded-2xl' : 'bg-gray-50 border-2 border-gray-400 rounded-2xl' }` }>
+                <div key={ task.id } className={ `h-full w-full p-5 shadow-sm flex flex-col gap-5  ${ task.overDue ? 'bg-red-200 border-2 border-red-500 rounded-2xl' : 'bg-gray-50 border-2 border-gray-400 rounded-2xl' }` }>
                     <div className="flex flex-row items-center justify-around text-xs">
                         <div className={ `p-2 rounded-lg cursor-not-allowed ${ task.priority === 'Medium' && 'bg-yellow-100 text-yellow-500 font-semibold' } ${ task.priority === 'High' && 'bg-red-100 text-red-500 font-semibold' } ${ task.priority === 'Low' && 'bg-gray-200 text-gray-600 font-semibold' }` }>{ task.priority }</div>
                         <div>

@@ -1,7 +1,10 @@
+import Completed from "./Completed";
 
 export default function page ()
 {
     return (
-        <div>page</div>
+        <div>
+            <Completed />
+        </div>
     );
 }

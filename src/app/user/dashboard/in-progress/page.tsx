@@ -1,8 +1,11 @@
 import React from 'react';
+import InProgress from './InProgress';
 
 export default function page ()
 {
     return (
-        <div>page</div>
+        <div>
+            <InProgress />
+        </div>
     );
 }

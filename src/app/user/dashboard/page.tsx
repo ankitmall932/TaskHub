@@ -11,6 +11,7 @@ export default function Dashboard ()
                 <h1 className="text-center text-2xl font-bold mt-3">Overview</h1>
                 <h2 className="text-center text-sm font-semibold mb-3">Monitor all of your tasks here</h2>
                 <Top />
+                <h1 className="text-center text-2xl font-bold">Today&apos;s Task</h1>
                 <Today />
                 <Graph />
             </div>

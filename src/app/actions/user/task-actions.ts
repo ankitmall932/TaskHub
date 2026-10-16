@@ -287,6 +287,9 @@ export const getAllTask = async () =>
                         name: true,
                     }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         } );
         return {

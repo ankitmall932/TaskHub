@@ -19,7 +19,7 @@ export default async function Top ()
     const completed = countStatusTask.find( ( t ) => t.status === 'Completed' )?._count._all ?? 0;
     const pending = countStatusTask.find( ( t ) => t.status === 'Pending' )?._count._all ?? 0;
     return (
-        <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 sm:gap-2 gap-1 mb-10 border border-gray-500 rounded-2xl sm:p-2 p-1">
+        <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 sm:gap-2 gap-1 mb-5 border border-gray-500 rounded-2xl sm:p-2 p-1">
             <div className="p-4 border h-35 flex flex-col justify-between  border-gray-400 shadow-xs rounded-xl">
                 <div className="flex flex-row justify-between items-center">
                     <div className="p-2 border border-gray-400 rounded-xl shadow-xs"><Calendar size={ 15 } color="green" /></div>

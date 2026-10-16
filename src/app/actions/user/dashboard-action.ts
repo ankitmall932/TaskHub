@@ -44,7 +44,6 @@ export const countAll = async () =>
                 countStatusTask,
                 countOverdueTask
             }
-
         };
     } catch ( error )
     {
@@ -78,6 +77,9 @@ export const getCompletedTask = async () =>
                         name: true
                     }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         } );
         return {
@@ -116,6 +118,9 @@ export const getInProgressTask = async () =>
                         name: true
                     }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         } );
         return {
@@ -154,6 +159,9 @@ export const getPendingTask = async () =>
                         name: true
                     }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         } );
         return {
@@ -192,11 +200,64 @@ export const getOverDueTask = async () =>
                         name: true
                     }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         } );
         return {
             success: true,
             data: result
+        };
+    } catch ( error )
+    {
+        return {
+            success: false,
+            message: error instanceof Error ? error.message : 'Something went wrong'
+        };
+    }
+};
+
+export const getTodayTask = async () =>
+{
+    try
+    {
+        const session = await getSession();
+        if ( !session )
+        {
+            return {
+                success: false,
+                message: 'Unauthorized'
+            };
+        }
+
+        const today = new Date();
+        today.setUTCHours( 0, 0, 0, 0 );
+        const tomorrow = new Date( today );
+        tomorrow.setUTCDate( tomorrow.getUTCDate() + 1 );
+
+        const response = await prisma.task.findMany( {
+            where: {
+                userId: session.user.id,
+                start: {
+                    gte: today,
+                    lt: tomorrow
+                }
+            },
+            include: {
+                spaces: {
+                    select: {
+                        name: true
+                    }
+                }
+            },
+            orderBy: {
+                createdAt: 'desc'
+            }
+        } );
+        return {
+            success: true,
+            data: response
         };
     } catch ( error )
     {

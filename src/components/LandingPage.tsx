@@ -16,7 +16,7 @@ export default function LandingPage ()
                     </div>
                 </div>
                 <div className="flex flex-col justify-center items-center h-full  w-full">
-                    <Image className="h-full w-full" src="/background.jpg" width={ 500 } height={ 100 } alt="main image" />
+                    <Image className="h-full w-full" src="/Task-hub_Dashboard.png" width={ 500 } height={ 100 } alt="main image" />
                 </div>
             </div>
         </>
